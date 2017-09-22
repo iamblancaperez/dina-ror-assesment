@@ -29,18 +29,20 @@ RSpec.describe User, type: :model do
     end
 
     it "should have_many :permissions" do
-      it { should have_many(:permissions).through(:role) }
+      should have_many(:role_permissions).through(:role)
     end
   end
 
   describe "all permissions" do
-    it "should return all permissions of a user (altogether the permissions provided by their role and their own permissions)." do
-
-      @permission = Permission.new(name: "Regular Permission")
-      @role_permission = Permission.new(name: "Role Permission")
-
+    it "should return all permissions of a user" do
       @role = Role.new(name: "One Role")
+      @role2 = Role.new(name: "Second Role")
+      
+      @role_permission = Permission.new(name: "Role Permission")
       @role.permissions << @role_permission
+      
+      @permission = Permission.new(name: "Regular Permission")
+      @role2.permissions << @role_permission
       
       @user.permissions << @permission
 

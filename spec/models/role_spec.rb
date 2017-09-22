@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Role, type: :model do
   before :each do
-    @user = User.new
-    
     @role = Role.new(name: "RoleName")
-    @user.role = @role
+    @user = User.new(name: "User", status: "Active")
+    
+    @role.user = @user
   end
 
   describe "valid attributes" do
