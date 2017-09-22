@@ -19,14 +19,4 @@ class CreateInitialTables < ActiveRecord::Migration[5.1]
     end
 
   end
-  def self.down
-  end
-
-  end
-
-
-roles have many permissions
-users have many permissions
-users have only one roles
-
 end
