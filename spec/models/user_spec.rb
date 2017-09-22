@@ -22,6 +22,10 @@ RSpec.describe User, type: :model do
   describe "associations" do
     it "should have_many :permissions" do
       expect(User.reflect_on_association(:permissions).macro).to eq :has_many
-    end    
+    end  
+
+    it "shoud have one role" do
+      expect(User.reflect_on_association(:role).macro.should).to eq :has_one
+    end
   end
 end
