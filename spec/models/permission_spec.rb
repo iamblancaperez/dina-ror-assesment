@@ -5,6 +5,8 @@ RSpec.describe Permission, type: :model do
     @permi = Permission.new(name: "PermissionName")
     @role = Role.new
     @role.permissions << @permi
+    @user = User.new
+    @user.permissions << @permi
   end
 
   describe "valid attributes" do
