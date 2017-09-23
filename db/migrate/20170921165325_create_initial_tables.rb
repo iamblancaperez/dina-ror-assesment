@@ -17,12 +17,12 @@ class CreateInitialTables < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    create_table :role_permissions, id: false do |t|
+    create_table :permissions_roles, id: false do |t|
       t.belongs_to :role, index: true
       t.belongs_to :permission, index: true
     end
 
-    create_table :users_permissions, id: false do |t|
+    create_table :permissions_users, id: false do |t|
       t.belongs_to :user, index: true
       t.belongs_to :permission, index: true
     end

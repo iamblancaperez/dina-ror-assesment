@@ -18,11 +18,18 @@ ActiveRecord::Schema.define(version: 20170921165325) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "role_permissions", id: false, force: :cascade do |t|
+  create_table "permissions_roles", id: false, force: :cascade do |t|
     t.integer "role_id"
     t.integer "permission_id"
-    t.index ["permission_id"], name: "index_role_permissions_on_permission_id"
-    t.index ["role_id"], name: "index_role_permissions_on_role_id"
+    t.index ["permission_id"], name: "index_permissions_roles_on_permission_id"
+    t.index ["role_id"], name: "index_permissions_roles_on_role_id"
+  end
+
+  create_table "permissions_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "permission_id"
+    t.index ["permission_id"], name: "index_permissions_users_on_permission_id"
+    t.index ["user_id"], name: "index_permissions_users_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -38,13 +45,6 @@ ActiveRecord::Schema.define(version: 20170921165325) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_users_on_role_id"
-  end
-
-  create_table "users_permissions", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "permission_id"
-    t.index ["permission_id"], name: "index_users_permissions_on_permission_id"
-    t.index ["user_id"], name: "index_users_permissions_on_user_id"
   end
 
 end

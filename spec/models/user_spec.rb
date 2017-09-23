@@ -30,15 +30,15 @@ RSpec.describe User, type: :model do
   end
 
   it "should return all permissions of a user" do
+    puts "****"
     @role = Role.new(name: "One Role")
-    @role2 = Role.new(name: "Second Role")
     
     @role_permission = Permission.new(name: "Role Permission")
     @role.permissions << @role_permission
-    
+
+    @role.users << @user
+
     @permission = Permission.new(name: "Regular Permission")
-    @role2.permissions << @role_permission
-    
     @user.permissions << @permission
 
     @user.all_permissions.should include (@permission)
