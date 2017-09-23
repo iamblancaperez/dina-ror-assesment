@@ -1,16 +1,17 @@
 <h1>Listing users</h1>
-<table id="users">
-  <tr>
-    <th>Name</th>
-    <th>Status</th>
-  </tr>
- 	<% @users.each do |user| %>
- 		<tr>
-		  <td> <%= user.name %> </td>
-		  <td> <%= user.status %> </td>
-	  </tr>
-	<% end %>
-</table>
+<ul class="list-group" id="users">
+  <li class="active list-group-item">
+    <span> Name </span>
+    <span> Status </span>
+  </li>
+  <% @users.each do |user| %>
+    <li class="list-group-item">
+      <span> <%= user.name %> </span>
+      <span> <%= user.status %> </span>
+    </li>
+  <% end %>
+</ul>
+
 <%= will_paginate @users, remote: true %>
-<br />
-<%= link_to 'New User', new_user_path, remote: true %>
+
+<%= render "new_users_modal" %>

@@ -11,6 +11,7 @@ gem 'jbuilder',     '2.7.0'
 gem 'bootstrap-sass'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
+gem 'bootstrap_form'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
