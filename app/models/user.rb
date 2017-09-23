@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 	validates_presence_of :name, :status
-	has_one :role
-	has_many :permissions
+	belongs_to :role, optional: true
+	has_and_belongs_to_many :permissions
 	has_many :role_permissions, :through => :role, :source => :permissions
 
 	def all_permissions

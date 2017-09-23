@@ -20,11 +20,7 @@ RSpec.describe Role, type: :model do
 
   describe "associations" do
     it "should have_many :permissions" do
-      expect(Role.reflect_on_association(:permissions).macro).to eq :has_many
-    end
-    it "should belongs to an user" do
-      assoc = Role.reflect_on_association(:user)
-      expect(assoc.macro).to eq :belongs_to
+      expect(Role.reflect_on_association(:permissions).macro).to eq :has_and_belongs_to_many
     end
   end
 end

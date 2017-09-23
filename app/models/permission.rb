@@ -1,5 +1,5 @@
 class Permission < ApplicationRecord
 	validates_presence_of :name
-	belongs_to :role
-	belongs_to :user
+	has_and_belongs_to_many :roles
+	has_and_belongs_to_many :users
 end

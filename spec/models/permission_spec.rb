@@ -21,11 +21,11 @@ RSpec.describe Permission, type: :model do
 
 
     it "should has and belong to many roles" do
-      expect(Permission.reflect_on_association(:roles).macro).to eq :has_many_and_belong_to_many
+      expect(Permission.reflect_on_association(:roles).macro).to eq :has_and_belongs_to_many
     end
 
     it "should has and belong to many users" do
-      expect(Permission.reflect_on_association(:permissions).macro).to eq :has_many_and_belong_to_many
+      expect(Permission.reflect_on_association(:permissions).macro).to eq :has_and_belongs_to_many
     end
   end
 end
