@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
     it "is not valid without a status" do
       @user.status= nil
       expect(@user).to_not be_valid
-    end   
+    end
   end
 
   describe "associations" do
@@ -30,7 +30,6 @@ RSpec.describe User, type: :model do
   end
 
   it "should return all permissions of a user" do
-    puts "****"
     @role = Role.new(name: "One Role")
     
     @role_permission = Permission.new(name: "Role Permission")
