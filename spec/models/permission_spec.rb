@@ -19,14 +19,13 @@ RSpec.describe Permission, type: :model do
       expect(@permi).to_not be_valid
     end
 
-		it "belongs_to role" do
-      assoc = Permission.reflect_on_association(:role)
-      expect(assoc.macro).to eq :belongs_to
+
+    it "should has and belong to many roles" do
+      expect(Permission.reflect_on_association(:roles).macro).to eq :has_many_and_belong_to_many
     end
 
-    it "belongs_to user" do
-      assoc = Permission.reflect_on_association(:user)
-      expect(assoc.macro).to eq :belongs_to
+    it "should has and belong to many users" do
+      expect(Permission.reflect_on_association(:permissions).macro).to eq :has_many_and_belong_to_many
     end
   end
 end

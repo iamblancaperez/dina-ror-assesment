@@ -20,34 +20,16 @@ RSpec.describe User, type: :model do
   end
 
   describe "associations" do
-    it "should have_many :permissions" do
-      expect(User.reflect_on_association(:permissions).macro).to eq :has_many
+    it "should has and belong to many permissions" do
+      expect(User.reflect_on_association(:permissions).macro).to eq :has_many_and_belong_to_many
     end  
 
-    it "shoud have one role" do
-      expect(User.reflect_on_association(:role).macro.should).to eq :has_one
-    end
-
-    it "should have_many :permissions" do
+    it "should has_many :permissions through role" do
       should have_many(:role_permissions).through(:role)
     end
   end
 
   describe "all permissions" do
-    it "should return all permissions of a user" do
-      @role = Role.new(name: "One Role")
-      @role2 = Role.new(name: "Second Role")
-      
-      @role_permission = Permission.new(name: "Role Permission")
-      @role.permissions << @role_permission
-      
-      @permission = Permission.new(name: "Regular Permission")
-      @role2.permissions << @role_permission
-      
-      @user.permissions << @permission
-
-      @user.all_permissions.should include (@permission)
-      @user.all_permissions.should include (@role_permission)
-    end
+    
   end
 end
