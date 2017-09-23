@@ -20,4 +20,17 @@ RSpec.describe Role, type: :model do
       expect(Role.reflect_on_association(:permissions).macro).to eq :has_and_belongs_to_many
     end
   end
+
+  describe "start with letter" do
+
+    it "NOT WORKING should return all the roles start with letter" do
+      @role2 = Role.new(name: "RoleName2")
+      @role3 = Role.new(name: "My RoleName2")
+
+      @roles_start_with_r = Role.start_with("r")
+      
+      expect( @roles_start_with_r).should include(@role, @role2)
+      expect( @roles_start_with_r).to have_exactly(2).items
+    end
+  end
 end
