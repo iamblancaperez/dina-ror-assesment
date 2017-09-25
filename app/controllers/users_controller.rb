@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def index
   	@users = User.paginate(per_page: 8, page: params[:page])
   	@user = User.new
+    @roles = Role.all
   	respond_to do |format|
     	format.html
     	format.js
@@ -10,11 +11,7 @@ class UsersController < ApplicationController
 
   def create
 	  @user = User.create!(allowed_params)
-	  puts "*****************************"
-	  puts @user
 	  respond_to do |f|
-	    #f.html { redirect_to tasks_url }
-
 	    f.js
 	  end
 	end
@@ -22,7 +19,7 @@ class UsersController < ApplicationController
 	private
 
   def allowed_params
-    params.require(:user).permit(:name, :status)
+    params.require(:user).permit(:name, :status, :role_id)
   end
 
 end

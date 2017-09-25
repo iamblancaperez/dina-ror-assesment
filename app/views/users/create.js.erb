@@ -1,1 +1,3 @@
-$('#modal').modal('hide');
+$('#myModal').modal('hide');
+var userLi = "<li class='list-group-item'> <span> <%= @user.name %> </span> <span> <%= @user.status %> </span> </li>";
+$('#users').append(userLi);
